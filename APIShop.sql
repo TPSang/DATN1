@@ -52,16 +52,18 @@ INSERT [dbo].[Roles] ([Id], [Name]) VALUES (1, N'ROLE_ADMIN')
 INSERT [dbo].[Roles] ([Id], [Name]) VALUES (2, N'ROLE_USER')
 SET IDENTITY_INSERT [dbo].[Roles] OFF
 GO
+
+
 CREATE TABLE [dbo].[Orders](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Product_Id] [int] NOT NULL,
 	[Address_Id] [int] NOT NULL,
 	[Color_Id] [int] NULL,
 	[Size_Id] [int] NULL,
+	[User_Id]	[int] not null,
 	[Quality] [int] NOT NULL,
 	[Date] [date] NOT NULL,
-	[Method] [bit] NOT NULL,
-	[Name] [varchar](6) NULL,
+	[Pay] [bit] NOT NULL,
 	[Status] [bit] NULL
 ) ON [PRIMARY]
 CREATE TABLE [dbo].[Favorites](
@@ -81,19 +83,17 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+
+
 CREATE TABLE [dbo].[Products](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](100) NOT NULL,
 	[Image] [nvarchar](100) NOT NULL,
 	[Price] [int] NOT NULL,
-	[Origin] [nvarchar](100) NOT NULL,
 	[Material] [nvarchar](100) NOT NULL,
-	[Status] [bit] NULL,
 	[Describe] [nvarchar](max) NOT NULL,
-	[Review] [nvarchar](max) NULL,
-	[Manu_Id] [int] NOT NULL,
 	[Views] [int] NULL,
-	[ManuDay] [date] NULL,
+	[SL] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -110,3 +110,8 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+CREATE TABLE [STATUS](
+[Id] [int] IDENTITY(1,1) not null,
+[Products_Id] [int] not null,
+[Delivery] [bit] not null,
+)
