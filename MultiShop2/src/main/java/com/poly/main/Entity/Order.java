@@ -1,40 +1,72 @@
 package com.poly.main.Entity;
-// mo ta thong tin don hang va anh sang bang order trong du lieu
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+
 @Entity
-@Table(name ="orders" )
-public class Order implements Serializable{
+@Table(name="Orders")
+public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int orderId;//id don hang
+	private int id;
+	private String name;
+	private boolean status;
+	private boolean method;
+	private int quality;
+	private String date;
 	
-	@Temporal(TemporalType.DATE)
-	private Date orderDate;//ngay len don hang
+	@ManyToOne
+	@JoinColumn(name="Color_Id", nullable = true)
+	Color color;
 	
-	@Column(nullable = false)
-	private int customerId; // don hang nay thuoc ve khach hang nao
+	@ManyToOne
+	@JoinColumn(name="Size_Id", nullable = true)
+	Size size;
 	
-	@Column(nullable = false)
-	private double amout;// tong tien don hang
+	@ManyToOne
+	@JoinColumn(name="Address_Id")
+	Address address;
 	
-	@Column(nullable = false)
-	private short status; // tong tin don hang
+	@ManyToOne
+	@JoinColumn(name="Product_Id")
+	Product product;
+
+	public Order(String name, boolean status, boolean method, int quality, String date, Color color, Size size,
+			Address address, Product product) {
+		super();
+		this.name = name;
+		this.status = status;
+		this.method = method;
+		this.quality = quality;
+		this.date = date;
+		this.color = color;
+		this.size = size;
+		this.address = address;
+		this.product = product;
+	}
+
+	
+	
+	
 }
