@@ -1,7 +1,5 @@
 package com.poly.main.Controller;
 
-import javax.mail.MessagingException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -21,12 +19,9 @@ import com.poly.main.Dao.UserRoleDao;
 import com.poly.main.Entity.Role;
 import com.poly.main.Entity.User;
 import com.poly.main.Entity.UserRole;
-import com.poly.main.Model.MailInfo;
-import com.poly.main.Model.UserLogin;
 import com.poly.main.Model.UserRegister;
-import com.poly.main.Service.MailerServiceImpl;
 import com.poly.main.Service.SessionService;
-import com.poly.main.Validator.UserLoginValidator;
+import com.poly.main.Service.ServiceImpl.MailerServiceImpl;
 import com.poly.main.Validator.UserRegisterValidator;
 
 @Controller

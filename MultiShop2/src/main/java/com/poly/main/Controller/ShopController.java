@@ -26,7 +26,6 @@ import com.poly.main.Entity.Product;
 import com.poly.main.Model.ShowCategory;
 import com.poly.main.Model.ShowSelect;
 import com.poly.main.Service.SessionService;
-import com.poly.main.Service.ShoppingCartServiceImpl;
 
 @Controller
 public class ShopController {

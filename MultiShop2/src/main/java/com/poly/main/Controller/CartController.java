@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.poly.main.Model.Item;
 import com.poly.main.Service.SessionService;
-import com.poly.main.Service.ShoppingCartServiceImpl;
+import com.poly.main.Service.ServiceImpl.ShoppingCartServiceImpl;
 
 @Controller
 public class CartController {

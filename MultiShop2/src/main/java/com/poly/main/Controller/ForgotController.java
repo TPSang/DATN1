@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.poly.main.Dao.UserDao;
 import com.poly.main.Entity.User;
 import com.poly.main.Model.ForgotPassword;
-import com.poly.main.Service.MailerServiceImpl;
+import com.poly.main.Service.ServiceImpl.MailerServiceImpl;
 import com.poly.main.Validator.ForgotPassValidator;
 
 @Controller

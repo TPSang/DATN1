@@ -5,22 +5,15 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import com.poly.main.Entity.User;
 
 public interface UserService {
 
-	User getById(Long id);
-
-	void deleteAll();
-
-	void deleteAllInBatch();
-
 	void delete(User entity);
 
 	void deleteById(Long id);
-
-	long count();
 
 	<S extends User> List<S> saveAllAndFlush(Iterable<S> entities);
 
@@ -33,6 +26,10 @@ public interface UserService {
 	<S extends User> List<S> saveAll(Iterable<S> entities);
 
 	Optional<User> findById(Long id);
+
+	List<User> findAllById(Iterable<Long> ids);
+
+	List<User> findAll(Sort sort);
 
 	List<User> findAll();
 

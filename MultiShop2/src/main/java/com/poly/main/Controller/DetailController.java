@@ -1,6 +1,5 @@
 package com.poly.main.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +20,6 @@ import com.poly.main.Dao.ProductColorDao;
 import com.poly.main.Dao.ProductDao;
 import com.poly.main.Dao.ProductSizeDao;
 import com.poly.main.Dao.UserDao;
-import com.poly.main.Entity.Color;
 import com.poly.main.Entity.Favorite;
 import com.poly.main.Entity.Product;
 import com.poly.main.Entity.ProductColor;
@@ -31,9 +28,8 @@ import com.poly.main.Entity.User;
 import com.poly.main.Model.Item;
 import com.poly.main.Model.LoadInfo;
 import com.poly.main.Model.ShowCategory;
-import com.poly.main.Service.ParamService;
 import com.poly.main.Service.SessionService;
-import com.poly.main.Service.ShoppingCartServiceImpl;
+import com.poly.main.Service.ServiceImpl.ShoppingCartServiceImpl;
 
 @Controller
 public class DetailController {

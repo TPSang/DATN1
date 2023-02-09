@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +29,9 @@ import com.poly.main.Entity.Size;
 import com.poly.main.Entity.User;
 import com.poly.main.Model.AddressModel;
 import com.poly.main.Model.Item;
-import com.poly.main.Service.MailerServiceImpl;
 import com.poly.main.Service.SessionService;
-import com.poly.main.Service.ShoppingCartServiceImpl;
+import com.poly.main.Service.ServiceImpl.MailerServiceImpl;
+import com.poly.main.Service.ServiceImpl.ShoppingCartServiceImpl;
 import com.poly.main.Validator.AddressValidator;
 
 @Controller

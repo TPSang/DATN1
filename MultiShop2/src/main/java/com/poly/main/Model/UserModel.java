@@ -18,4 +18,6 @@ public class UserModel {
 	private String fullname;
 	private String password;
 	private String confirm;
+	private boolean remember;
+	private String code;
 }
