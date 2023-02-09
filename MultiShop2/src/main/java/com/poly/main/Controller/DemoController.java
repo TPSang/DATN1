@@ -1,5 +1,5 @@
 package com.poly.main.Controller;
 
-public class demoController {
+public class DemoController {
 
 }
