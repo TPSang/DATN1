@@ -25,7 +25,7 @@ public interface UserService {
 
 	<S extends User> List<S> saveAll(Iterable<S> entities);
 
-	Optional<User> findById(Long id);
+	Optional<User> findById(Long string);
 
 	List<User> findAllById(Iterable<Long> ids);
 

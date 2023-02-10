@@ -1,5 +1,7 @@
 //package com.poly.main.Validator;
 //
+//import java.util.Optional;
+//
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.stereotype.Component;
@@ -11,11 +13,12 @@
 //import com.poly.main.Entity.User;
 //import com.poly.main.Model.UserLogin;
 //import com.poly.main.Service.SessionService;
+//import com.poly.main.Service.UserService;
 //
 //@Component
 //public class UserLoginValidator implements Validator {
 //	@Autowired
-//	private UserDao dao;
+//	private UserService service;
 //	
 //	@Autowired
 //    private PasswordEncoder passwordEncoder;
@@ -34,7 +37,7 @@
 //		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotBlank.userLogin.password");
 //
 //		if (!errors.hasFieldErrors()) {
-//			User user = dao.findByEmail(entity.getUsername());
+//			Optional<User> user = service.findById(entity.getUsername());
 //			if (user == null) {
 //				errors.rejectValue("username", "NotFind.userLogin.username");
 //				errors.rejectValue("password", "NotFind.userLogin.password");

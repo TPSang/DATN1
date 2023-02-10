@@ -1,40 +1,23 @@
 package com.poly.main.Service;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+import com.poly.main.BaseResponse.BaseResponse;
 import com.poly.main.Entity.Category;
 
+@Service
 public interface CategoryService {
 
-	Category getById(Long id);
+	BaseResponse getAll();
+	
+	BaseResponse getById(Long id);
+	
+	BaseResponse create(Category category);
+	
+	BaseResponse update(Category category);
 
-	void deleteAll();
-
-	void deleteAllInBatch();
-
-	void delete(Category entity);
-
-	void deleteById(Long id);
-
-	long count();
-
-	boolean existsById(Long id);
-
-	void flush();
-
-	Optional<Category> findById(Long id);
-
-	List<Category> findAll(Sort sort);
-
-	List<Category> findAll();
-
-	Page<Category> findAll(Pageable pageable);
-
-	<S extends Category> S save(S entity);
+	BaseResponse delete(Long id);
 
 }

@@ -1,89 +1,55 @@
 package com.poly.main.Service.ServiceImpl;
 
-import java.util.List;
-import java.util.Optional;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.poly.main.BaseResponse.BaseResponse;
 import com.poly.main.Entity.Category;
 import com.poly.main.Repository.CategoryRepository;
 import com.poly.main.Service.CategoryService;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
-	CategoryRepository categoryRepository ;
 
-	public CategoryServiceImpl(CategoryRepository categoryRepository) {
-		super();
-		this.categoryRepository = categoryRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
+	@Override
+	public BaseResponse getAll() {
+		return new BaseResponse("1", "Find Success Data", categoryRepository.findAll());
 	}
 
 	@Override
-	public <S extends Category> S save(S entity) {
-		return categoryRepository.save(entity);
+	public BaseResponse getById(Long id) {
+		return new BaseResponse("1", "Find Success Data", categoryRepository.findById(id));
 	}
 
 	@Override
-	public Page<Category> findAll(Pageable pageable) {
-		return categoryRepository.findAll(pageable);
+	public BaseResponse create(Category category) {
+		categoryRepository.save(category);
+		return new BaseResponse("1", "Create Success", category);
 	}
 
 	@Override
-	public List<Category> findAll() {
-		return categoryRepository.findAll();
+	public BaseResponse update(Category category) {
+		if (categoryRepository.getById(category.getId()) != null) {
+			categoryRepository.save(category);
+			return new BaseResponse("1", "Update Success", category);
+		}
+		return new BaseResponse("-1","Update Fail !");
 	}
 
 	@Override
-	public List<Category> findAll(Sort sort) {
-		return categoryRepository.findAll(sort);
+	public BaseResponse delete(Long id) {
+		if(categoryRepository.getById(id)!= null) {
+			categoryRepository.deleteById(id);
+			return new BaseResponse("1","Delete Success");
+		}
+		return new BaseResponse("-1","Delete fail");
 	}
 
-	@Override
-	public Optional<Category> findById(Long id) {
-		return categoryRepository.findById(id);
-	}
-
-	@Override
-	public void flush() {
-		categoryRepository.flush();
-	}
-
-	@Override
-	public boolean existsById(Long id) {
-		return categoryRepository.existsById(id);
-	}
-
-	@Override
-	public long count() {
-		return categoryRepository.count();
-	}
-
-	@Override
-	public void deleteById(Long id) {
-		categoryRepository.deleteById(id);
-	}
-
-	@Override
-	public void delete(Category entity) {
-		categoryRepository.delete(entity);
-	}
-
-	@Override
-	public void deleteAllInBatch() {
-		categoryRepository.deleteAllInBatch();
-	}
-
-	@Override
-	public void deleteAll() {
-		categoryRepository.deleteAll();
-	}
-
-	@Override
-	public Category getById(Long id) {
-		return categoryRepository.getById(id);
-	}
+	
 	
 }
