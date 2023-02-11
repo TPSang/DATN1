@@ -10,6 +10,5 @@ import com.poly.main.Entity.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-	@Query("SELECT c FROM Category c WHERE c.name LIKE ?1")
-	Page<Category> fillToTable(String name, Pageable pageable);
+	
 }
